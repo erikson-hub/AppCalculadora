@@ -16,16 +16,22 @@ export class CalculadoraComponent {
   agregar(valor: string): void {
     if (this.operaciones.includes(valor)) {
       this.operador = valor;
-      this.numeroActual = Number(this.salida);
+      this.numeroActual = Number(this.salida.substring(2));
       this.salida = this.salida + valor;
     } 
     else if (valor === '=') {
-      console.log(this.salida.split(this.operador));
-      this.numeroAnterior = Number(this.salida.split(this.operador)[1]);
+      console.log(this.salida.split(this.operador)[1].substring(2));
+      this.numeroAnterior = Number(this.salida.split(this.operador)[1].substring(2));
       this.calcular();
     } 
     else if (valor === 'C') {
       this.limpiar();
+    }
+    else if (this.salida === '') {
+      this.salida = "S/" + valor;
+    }
+    else if (this.salida[this.salida.length-1] === this.operador) {
+      this.salida = this.salida + "S/" + valor;
     }
     else {
       this.salida = this.salida + valor;
@@ -47,7 +53,7 @@ export class CalculadoraComponent {
         this.resultado = this.numeroActual / this.numeroAnterior;
         break;
     }
-    this.salida = this.resultado.toString();
+    this.salida = "S/" + this.resultado.toString();
     console.log(this.numeroActual, this.numeroAnterior, this.operador, this.resultado);
   }
 
