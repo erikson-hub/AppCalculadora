@@ -28,35 +28,51 @@ export class CalculadoraComponent {
       }
     } 
     else if (this.salida === '') {
-      this.salida = "S/" + valor;
-      if (this.numeroActual) {
-        this.numeroActual += valor;
+      if (valor === '.') {
+        this.salida = 'S/0.';
+        this.numeroActual = '0.';
+      } else {
+        this.salida = "S/" + valor;
+        if (this.numeroActual) {
+          this.numeroActual += valor;
         } else {
-        this.numeroActual = valor;
+          this.numeroActual = valor;
         }
+      }
     }
     else if (this.salida[this.salida.length-1] === this.operador) {
       this.salida += "S/" + valor;
       this.numeroActual += valor;
     }
-    else if (this.salida === 'S/0' && valor === '0') {
-      this.salida = 'S/0';
-      this.numeroActual = '0';
+    else if (valor === '.' && this.numeroActual && this.numeroActual.includes('.')) {
+      this.salida = this.salida;
+      this.numeroActual = this.numeroActual;
     }
-    else if (valor === '0') {
-      if (this.numeroActual !== '0') {
-         this.salida += valor;
-         this.numeroActual += valor;
-      }
-    } else {
-      if (this.numeroActual === '0') {
-         this.numeroActual = valor;
-         this.salida = this.salida.slice(0, -1) + valor;
+    else if (this.numeroActual === '0') {
+      this.salida = this.salida.slice(0, -1) + valor;
+      this.numeroActual = valor;
+    }
+    else {
+      this.salida += valor;
+      if (this.numeroActual) {
+        this.numeroActual += valor;
       } else {
-         this.numeroActual += valor;
-         this.salida += valor;
+        this.numeroActual = valor;
       }
     }
+    // else if (valor === '0') {
+    //   if (this.numeroActual !== '0') {
+    //      this.salida += valor;
+    //      this.numeroActual += valor;
+    //   }
+    // } else {
+    //   if (this.numeroActual === '0') {
+    //      this.numeroActual = valor;
+    //      this.salida = this.salida.slice(0, -1) + valor;
+    //   } else {
+    //      this.numeroActual += valor;
+    //      this.salida += valor;
+    //   }
     console.log(this.numeroActual, this.numeroAnterior, this.operador, this.salida)
   }
 
