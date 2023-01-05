@@ -32,6 +32,8 @@ export class CalculadoraComponent {
     else if (valor === '=') {
       if (this.numeroActual === null) {
         this.numeroActual = this.numeroAnterior;
+      } else if (this.operador === null) {
+        console.log(this.numeroActual);
       } else {
         this.calcular();
       }
@@ -57,11 +59,7 @@ export class CalculadoraComponent {
         this.numeroActual += valor;
       }
     }
-    console.log(
-      this.numeroActual,
-      this.numeroAnterior,
-      this.operador,
-    );
+    // console.log(this.numeroActual, this.numeroAnterior, this.operador);
   }
 
   calcular(): void {
