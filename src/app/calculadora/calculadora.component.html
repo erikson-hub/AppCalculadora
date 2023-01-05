@@ -83,8 +83,10 @@
         .
       </button>
       <!-- Igual -->
+      <!-- if operador is null show "=" sign else show check mark -->
       <button type="button" class="equal-sign btn btn-info" value="=" (click)="agregar('=')">
-        =
+        <span *ngIf="operador !== null">=</span>
+        <span *ngIf="operador === null">✓</span>
       </button>
     </div>
     <!-- Fecha  -->
