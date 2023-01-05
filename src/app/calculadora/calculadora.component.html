@@ -16,185 +16,74 @@
     /> -->
     <div class="calculator-keys">
       <!-- Primera fila -->
-      <button
-        type="button"
-        class="operator btn"
-        value="/"
-        (click)="agregar('/')"
-      >
+      <button type="button" class="operator btn" value="/" (click)="agregar('/')">
         &divide;
       </button>
-      <button
-        type="button"
-        value="1"
-        class="btn btn-light waves-effect"
-        (click)="agregar('1')"
-      >
+      <button type="button" value="1" class="btn btn-light waves-effect" (click)="agregar('1')">
         1
       </button>
-      <button
-        type="button"
-        value="2"
-        class="btn btn-light waves-effect"
-        (click)="agregar('2')"
-      >
+      <button type="button" value="2" class="btn btn-light waves-effect" (click)="agregar('2')">
         2
       </button>
-      <button
-        type="button"
-        value="3"
-        class="btn btn-light waves-effect"
-        (click)="agregar('3')"
-      >
+      <button type="button" value="3" class="btn btn-light waves-effect" (click)="agregar('3')">
         3
       </button>
-      <button
-        type="button"
-        class="btn btn-light waves-effect"
-        value="backspace"
-        (click)="removerDigito()"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 500"
-          width="35"
-          height="25"
-          fill="#4B5563"
-        >
+      <button type="button" class="btn btn-light waves-effect" value="backspace" (click)="removerDigito()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="35" height="25" fill="#4B5563">
           <path
-            d="M576 384C576 419.3 547.3 448 512 448H205.3C188.3 448 172 441.3 160 429.3L9.372 278.6C3.371 272.6 0 264.5 0 256C0 247.5 3.372 239.4 9.372 233.4L160 82.75C172 70.74 188.3 64 205.3 64H512C547.3 64 576 92.65 576 128V384zM271 208.1L318.1 256L271 303C261.7 312.4 261.7 327.6 271 336.1C280.4 346.3 295.6 346.3 304.1 336.1L352 289.9L399 336.1C408.4 346.3 423.6 346.3 432.1 336.1C442.3 327.6 442.3 312.4 432.1 303L385.9 256L432.1 208.1C442.3 199.6 442.3 184.4 432.1 175C423.6 165.7 408.4 165.7 399 175L352 222.1L304.1 175C295.6 165.7 280.4 165.7 271 175C261.7 184.4 261.7 199.6 271 208.1V208.1z"
-          />
+            d="M576 384C576 419.3 547.3 448 512 448H205.3C188.3 448 172 441.3 160 429.3L9.372 278.6C3.371 272.6 0 264.5 0 256C0 247.5 3.372 239.4 9.372 233.4L160 82.75C172 70.74 188.3 64 205.3 64H512C547.3 64 576 92.65 576 128V384zM271 208.1L318.1 256L271 303C261.7 312.4 261.7 327.6 271 336.1C280.4 346.3 295.6 346.3 304.1 336.1L352 289.9L399 336.1C408.4 346.3 423.6 346.3 432.1 336.1C442.3 327.6 442.3 312.4 432.1 303L385.9 256L432.1 208.1C442.3 199.6 442.3 184.4 432.1 175C423.6 165.7 408.4 165.7 399 175L352 222.1L304.1 175C295.6 165.7 280.4 165.7 271 175C261.7 184.4 261.7 199.6 271 208.1V208.1z" />
         </svg>
       </button>
       <!-- Segunda fila -->
-      <button
-        type="button"
-        class="operator btn"
-        value="×"
-        (click)="agregar('×')"
-      >
+      <button type="button" class="operator btn" value="×" (click)="agregar('×')">
         &times;
       </button>
-      <button
-        type="button"
-        value="4"
-        class="btn btn-light waves-effect"
-        (click)="agregar('4')"
-      >
+      <button type="button" value="4" class="btn btn-light waves-effect" (click)="agregar('4')">
         4
       </button>
-      <button
-        type="button"
-        value="5"
-        class="btn btn-light waves-effect"
-        (click)="agregar('5')"
-      >
+      <button type="button" value="5" class="btn btn-light waves-effect" (click)="agregar('5')">
         5
       </button>
-      <button
-        type="button"
-        value="6"
-        class="btn btn-light waves-effect"
-        (click)="agregar('6')"
-      >
+      <button type="button" value="6" class="btn btn-light waves-effect" (click)="agregar('6')">
         6
       </button>
-      <button
-        type="button"
-        class="btn btn-light waves-effect"
-        value="all-clear"
-        (click)="limpiar()"
-      >
+      <button type="button" class="btn btn-light waves-effect" value="all-clear" (click)="limpiar()">
         C
       </button>
       <!-- Tercera fila -->
-      <button
-        type="button"
-        class="operator btn"
-        value="-"
-        (click)="agregar('-')"
-      >
+      <button type="button" class="operator btn" value="-" (click)="agregar('-')">
         -
       </button>
-      <button
-        type="button"
-        value="7"
-        class="btn btn-light waves-effect"
-        (click)="agregar('7')"
-      >
+      <button type="button" value="7" class="btn btn-light waves-effect" (click)="agregar('7')">
         7
       </button>
-      <button
-        type="button"
-        value="8"
-        class="btn btn-light waves-effect"
-        (click)="agregar('8')"
-      >
+      <button type="button" value="8" class="btn btn-light waves-effect" (click)="agregar('8')">
         8
       </button>
-      <button
-        type="button"
-        value="9"
-        class="btn btn-light waves-effect"
-        (click)="agregar('9')"
-      >
+      <button type="button" value="9" class="btn btn-light waves-effect" (click)="agregar('9')">
         9
       </button>
       <!-- Cuarta fila -->
-      <button
-        type="button"
-        class="operator btn"
-        value="+"
-        (click)="agregar('+')"
-      >
+      <button type="button" class="operator btn" value="+" (click)="agregar('+')">
         +
       </button>
 
-      <button
-        type="button"
-        class="btn btn-light waves-effect"
-        value="calendar"
-        (click)="getDate()"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="bi bi-calendar-event"
-          viewBox="0 0 16 20"
-          width="25"
-          height="25"
-          fill="#4B5563"
-        >
+      <button type="button" class="btn btn-light waves-effect" value="calendar" (click)="getDate()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-calendar-event" viewBox="0 0 16 20" width="25" height="25"
+          fill="#4B5563">
+          <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
           <path
-            d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
-          />
-          <path
-            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
-          />
+            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
         </svg>
       </button>
-      <button
-        type="button"
-        value="0"
-        class="btn btn-light waves-effect"
-        (click)="agregar('0')"
-      >
+      <button type="button" value="0" class="btn btn-light waves-effect" (click)="agregar('0')">
         0
       </button>
-      <button
-        type="button"
-        value="."
-        class="btn btn-light waves-effect"
-        (click)="agregar('.')"
-      >
+      <button type="button" value="." class="btn btn-light waves-effect" (click)="agregar('.')">
         .
       </button>
       <!-- Igual -->
-      <button
-        type="button"
-        class="equal-sign btn btn-info"
-        value="="
-        (click)="agregar('=')"
-      >
+      <button type="button" class="equal-sign btn btn-info" value="=" (click)="agregar('=')">
         =
       </button>
     </div>
