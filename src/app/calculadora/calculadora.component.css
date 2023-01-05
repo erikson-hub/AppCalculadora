@@ -97,3 +97,28 @@ button {
   text-align: center;
   font-size: 1rem;
 }
+
+.text-subtitle {
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  opacity: 0.7;
+}
+
+.text-title {
+  font-size: 1.2rem;
+}
+
+.icon svg {
+  color: #06b6d4;
+}
+
+.icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
