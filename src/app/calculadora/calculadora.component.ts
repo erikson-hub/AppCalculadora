@@ -16,7 +16,7 @@ export class CalculadoraComponent {
     if (this.operaciones.includes(valor)) {
       if (this.operador !== null) {
         return;
-      } else if (this.numeroActual === null && (valor === '-')) {
+      } else if (this.numeroActual === null && valor === '-') {
         this.numeroActual = valor;
         return;
       } else if (this.numeroActual === null && valor !== '-') {
@@ -28,8 +28,7 @@ export class CalculadoraComponent {
         this.numeroAnterior = this.numeroActual;
         this.numeroActual = null;
       }
-    } 
-    else if (valor === '=') {
+    } else if (valor === '=') {
       if (this.numeroActual === null) {
         this.numeroActual = this.numeroAnterior;
       } else if (this.operador === null) {
@@ -37,8 +36,7 @@ export class CalculadoraComponent {
       } else {
         this.calcular();
       }
-    } 
-    else if ( valor === '.') {
+    } else if (valor === '.') {
       if (this.numeroActual === null) {
         this.numeroActual = '0.';
       } else if (this.numeroActual === '-') {
@@ -48,11 +46,12 @@ export class CalculadoraComponent {
       } else {
         this.numeroActual += valor;
       }
-    }
-    else if ( valor === '0' && (this.numeroActual === '0' || this.numeroActual === '-0')) {
+    } else if (
+      valor === '0' &&
+      (this.numeroActual === '0' || this.numeroActual === '-0')
+    ) {
       return;
-    } 
-    else {
+    } else {
       if (this.numeroActual === null || this.numeroActual === '0') {
         this.numeroActual = valor;
       } else {
@@ -87,6 +86,8 @@ export class CalculadoraComponent {
     }
     this.numeroAnterior = null;
     this.operador = null;
+
+    console.log(`Número actual es: ${this.numeroActual}`);
   }
 
   limpiar(): void {
@@ -96,11 +97,11 @@ export class CalculadoraComponent {
   }
 
   removerDigito(): void {
-    console.log('---');
-    console.log('numeroActual ' + this.numeroActual);
-    console.log('numeroAnterior ' + this.numeroAnterior);
-    console.log('operador ' + this.operador);
-    console.log(`length: ${this.numeroActual?.length}`);
+    // console.log('---');
+    // console.log('numeroActual ' + this.numeroActual);
+    // console.log('numeroAnterior ' + this.numeroAnterior);
+    // console.log('operador ' + this.operador);
+    // console.log(`length: ${this.numeroActual?.length}`);
     // {{ numeroAnterior }} {{ operando}} . {{ numeroActual}}
 
     // Si el ‘numeroActual’ tiene un solo digito y el ‘numeroAnterior’ y el ‘operando’ son null, el ‘numeroActual’ debe cambiar a 0.
@@ -135,7 +136,7 @@ export class CalculadoraComponent {
       this.operador = null;
     }
 
-    // Cuando el usuario haga click en debe remover el último dígito de ‘numeroActual’.
+    // Cuando el usuario haga click en el boton (x) debe remover el último dígito de ‘numeroActual’.
     else if (this.numeroActual) {
       if (this.numeroActual.length === 1) {
         this.numeroActual = '0';
@@ -144,15 +145,20 @@ export class CalculadoraComponent {
       }
     }
 
-    console.log('---');
-    console.log('numeroActual ' + this.numeroActual);
-    console.log('numeroAnterior ' + this.numeroAnterior);
-    console.log('operador ' + this.operador);
-    console.log(`length: ${this.numeroActual?.length}`);
+    // console.log('---');
+    // console.log('numeroActual ' + this.numeroActual);
+    // console.log('numeroAnterior ' + this.numeroAnterior);
+    // console.log('operador ' + this.operador);
+    // console.log(`length: ${this.numeroActual?.length}`);
   }
 
   getDate(): void {
     let date = new Date();
-    this.fecha = date.toLocaleDateString();
+    this.fecha = date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
   }
 }
