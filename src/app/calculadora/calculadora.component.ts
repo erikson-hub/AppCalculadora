@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Categoria } from './categoria.interface';
 
 @Component({
   selector: 'app-calculadora',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculadora.component.css'],
 })
 export class CalculadoraComponent {
+  categoria: Categoria = {
+    nombre: 'Groceries',
+    subTitle: 'Add expense to',
+  };
+
   numeroActual: string | null = null;
   numeroAnterior: string | null = null;
   operador: string | null = null;
