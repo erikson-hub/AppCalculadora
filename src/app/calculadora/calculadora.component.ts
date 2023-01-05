@@ -6,199 +6,64 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculadora.component.css'],
 })
 export class CalculadoraComponent {
-  // private numeroActual: string | null = null;
-  // private numeroAnterior: string | null = null;
-  // private operador: string | null = null;
   numeroActual: string | null = null;
   numeroAnterior: string | null = null;
   operador: string | null = null;
-
   private operaciones: string[] = ['+', '-', '×', '/'];
   fecha: string = '';
-  salida: string = '';
 
-  // agregar(valor: string): void {
-  //   // if (this.operaciones.includes(valor)) {
-  //   //   if (this.numeroActual === null) {
-  //   //     // Si numeroActual es null, no hagas nada
-  //   //     return;
-  //   //   }
-  //   //   if (this.operador) {
-  //   //     // Si el operador ya tiene un valor, no hagas nada
-  //   //     return;
-  //   //   }
-  //   //   this.operador = valor;
-  //   //   this.numeroAnterior = this.numeroActual;
-  //   //   this.numeroActual = '';
-  //   //   this.salida += valor;
-  //   // } else if (valor === '=') {
-  //   //   if (this.numeroActual === null) {
-  //   //     this.numeroActual = this.numeroAnterior;
-  //   //   } else {
-  //   //     this.calcular();
-  //   //   }
-  //   // } else if (this.salida === '') {
-  //   //   if (valor === '.') {
-  //   //     this.salida = 'S/0.';
-  //   //     this.numeroActual = '0.';
-  //   //   } else {
-  //   //     this.salida = 'S/' + valor;
-  //   //     if (this.numeroActual) {
-  //   //       this.numeroActual += valor;
-  //   //     } else {
-  //   //       this.numeroActual = valor;
-  //   //     }
-  //   //   }
-  //   // } else if (this.salida[this.salida.length - 1] === this.operador) {
-  //   //   this.salida += 'S/' + valor;
-  //   //   this.numeroActual += valor;
-  //   // } else if (
-  //   //   valor === '.' &&
-  //   //   this.numeroActual &&
-  //   //   this.numeroActual.includes('.')
-  //   // ) {
-  //   //   this.salida = this.salida;
-  //   //   this.numeroActual = this.numeroActual;
-  //   // } else if (this.numeroActual === '0') {
-  //   //   this.salida = this.salida.slice(0, -1) + valor;
-  //   //   this.numeroActual = valor;
-  //   // } else {
-  //   //   this.salida += valor;
-  //   //   if (this.numeroActual) {
-  //   //     this.numeroActual += valor;
-  //   //   } else {
-  //   //     this.numeroActual = valor;
-  //   //   }
-  //   // }
-  //   // // else if (valor === '0') {
-  //   // //   if (this.numeroActual !== '0') {
-  //   // //      this.salida += valor;
-  //   // //      this.numeroActual += valor;
-  //   // //   }
-  //   // // } else {
-  //   // //   if (this.numeroActual === '0') {
-  //   // //      this.numeroActual = valor;
-  //   // //      this.salida = this.salida.slice(0, -1) + valor;
-  //   // //   } else {
-  //   // //      this.numeroActual += valor;
-  //   // //      this.salida += valor;
-  //   // //   }
-  //   // console.log(
-  //   //   this.numeroActual,
-  //   //   this.numeroAnterior,
-  //   //   this.operador,
-  //   //   this.salida
-  //   // );
-  // }
   agregar(valor: string): void {
-    console.log(this.numeroActual);
     if (this.operaciones.includes(valor)) {
       if (this.operador !== null) {
         return;
-      } else if (this.salida === '' && (valor === '-' || valor === '+')) {
-        this.salida = valor + 'S/';
+      } else if (this.numeroActual === null && (valor === '-')) {
         this.numeroActual = valor;
         return;
-      } else if (this.salida === '' && valor !== '-' && valor !== '+') {
+      } else if (this.numeroActual === null && valor !== '-') {
         return;
-      } else if (this.numeroActual === '-' || this.numeroActual === '+') {
+      } else if (this.numeroActual === '-') {
         return;
       } else {
         this.operador = valor;
         this.numeroAnterior = this.numeroActual;
-        this.numeroActual = '';
-        this.salida += valor;
+        this.numeroActual = null;
       }
-    } else if (valor === '=') {
+    } 
+    else if (valor === '=') {
       if (this.numeroActual === null) {
         this.numeroActual = this.numeroAnterior;
       } else {
         this.calcular();
       }
-    } else if (this.salida === '') {
-      if (valor === '.') {
-        this.salida = 'S/0.';
+    } 
+    else if ( valor === '.') {
+      if (this.numeroActual === null) {
         this.numeroActual = '0.';
+      } else if (this.numeroActual === '-') {
+        this.numeroActual = '-0.';
+      } else if (this.numeroActual.includes('.')) {
+        return;
       } else {
-        this.salida = 'S/' + valor;
-        if (this.numeroActual) {
-          this.numeroActual += valor;
-        } else {
-          this.numeroActual = valor;
-        }
-      }
-    } else if (this.salida === 'S/0' && valor === '.') {
-      this.salida = 'S/0.';
-      this.numeroActual = '0.';
-    } else if (this.salida[this.salida.length - 1] === this.operador) {
-      if (valor === '.') {
-        this.salida += 'S/0.';
-        this.numeroActual = '0.';
-      } else {
-        this.salida += 'S/' + valor;
         this.numeroActual += valor;
       }
-    } else if (
-      valor === '.' &&
-      this.numeroActual &&
-      this.numeroActual.includes('.')
-    ) {
-      this.salida = this.salida;
-      this.numeroActual = this.numeroActual;
-    } else if (this.numeroActual === '0') {
-      if (valor === '0') {
-        this.salida = this.salida;
-        this.numeroActual = this.numeroActual;
-      } else if (valor === '.') {
-        this.salida += valor;
-        this.numeroActual += valor;
-      } else {
-        this.salida = this.salida.slice(0, -1) + valor;
+    }
+    else if ( valor === '0' && (this.numeroActual === '0' || this.numeroActual === '-0')) {
+      return;
+    } 
+    else {
+      if (this.numeroActual === null || this.numeroActual === '0') {
         this.numeroActual = valor;
-      }
-    } else {
-      this.salida += valor;
-      if (this.numeroActual) {
-        this.numeroActual += valor;
       } else {
-        this.numeroActual = valor;
+        this.numeroActual += valor;
       }
     }
     console.log(
       this.numeroActual,
       this.numeroAnterior,
       this.operador,
-      this.salida
     );
   }
 
-  // calcular(): void {
-  //   switch (this.operador) {
-  //     case '+':
-  //       this.numeroActual = (
-  //         Number(this.numeroActual) + Number(this.numeroAnterior)
-  //       ).toString();
-  //       break;
-  //     case '-':
-  //       this.numeroActual = (
-  //         Number(this.numeroAnterior) - Number(this.numeroActual)
-  //       ).toString();
-  //       break;
-  //     case '*':
-  //       this.numeroActual = (
-  //         Number(this.numeroActual) * Number(this.numeroAnterior)
-  //       ).toString();
-  //       break;
-  //     case '/':
-  //       this.numeroActual = (
-  //         Number(this.numeroAnterior) / Number(this.numeroActual)
-  //       ).toString();
-  //       break;
-  //   }
-  //   this.numeroAnterior = null;
-  //   this.operador = null;
-  //   this.salida = 'S/' + this.numeroActual;
-  // }
   calcular(): void {
     switch (this.operador) {
       case '+':
@@ -224,17 +89,9 @@ export class CalculadoraComponent {
     }
     this.numeroAnterior = null;
     this.operador = null;
-    if (this.numeroActual) {
-      if (this.numeroActual[0] === '-') {
-        this.salida = '-' + 'S/' + this.numeroActual.slice(1);
-      } else {
-        this.salida = 'S/' + this.numeroActual;
-      }
-    }
   }
 
   limpiar(): void {
-    this.salida = '';
     this.numeroActual = null;
     this.numeroAnterior = null;
     this.operador = null;
@@ -246,7 +103,6 @@ export class CalculadoraComponent {
     console.log('numeroAnterior ' + this.numeroAnterior);
     console.log('operador ' + this.operador);
     console.log(`length: ${this.numeroActual?.length}`);
-    console.log('salida ' + this.salida);
     // {{ numeroAnterior }} {{ operando}} . {{ numeroActual}}
 
     // Si el ‘numeroActual’ tiene un solo digito y el ‘numeroAnterior’ y el ‘operando’ son null, el ‘numeroActual’ debe cambiar a 0.
@@ -285,10 +141,8 @@ export class CalculadoraComponent {
     else if (this.numeroActual) {
       if (this.numeroActual.length === 1) {
         this.numeroActual = '0';
-        this.salida = this.salida.slice(0, -1) + '0';
       } else {
         this.numeroActual = this.numeroActual.slice(0, -1);
-        this.salida = this.salida.slice(0, -1);
       }
     }
 
@@ -297,15 +151,7 @@ export class CalculadoraComponent {
     console.log('numeroAnterior ' + this.numeroAnterior);
     console.log('operador ' + this.operador);
     console.log(`length: ${this.numeroActual?.length}`);
-    console.log('salida ' + this.salida);
   }
-
-  // borrar(): void {
-  //   this.salida = this.salida.slice(0, -1);
-  //   if (this.numeroActual !== null) {
-  //     this.numeroActual = this.numeroActual.slice(0, -1);
-  //   }
-  // }
 
   getDate(): void {
     let date = new Date();
